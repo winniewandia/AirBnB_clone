@@ -16,16 +16,18 @@ class BaseModel:
         """This is used to initialize the attributes
     and set up the initial state of the object
         """
-        if kwargs == NULL:
+        format = "%Y-%m-%dT%H:%M:%S.%f"
+        if not kwargs:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
         else:
+            if '__class__' in kwargs:
+                kwargs.pop('__class__')
             for key, value in kwargs.items():
                 if key == 'created_at' or key == "updated_at":
-                    value = datetime.strftime("%Y-%m-%dT%H:%M:%S.%f")
-                if key != "__class__":
-                    setattr(self, key, value)
+                    value = datetime.strptime(value, format)
+                setattr(self, key, value)
 
     def __str__(self):
         """returns the informal string representation of the object
