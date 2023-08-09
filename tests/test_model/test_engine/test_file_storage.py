@@ -98,3 +98,7 @@ class TestFileStorage(unittest.TestCase):
         """
         self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
         self.assertEqual(storage.all(), storage._FileStorage__objects)
+
+
+if __name__ == '__main__':
+    unittest.main()
