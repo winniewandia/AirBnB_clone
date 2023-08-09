@@ -2,7 +2,9 @@
 """This module contains the tests for BaseModel class
 """
 import datetime
+from io import StringIO
 import unittest
+from unittest.mock import patch
 from models.base_model import BaseModel
 
 
@@ -35,6 +37,18 @@ class TestBaseClass(unittest.TestCase):
             dict_1['created_at'], dict_2['created_at'])
         self.assertNotEqual(
             my_model1.updated_at, my_model2.updated_at)
+       
+    def test_kwargs(self):
+        my_model = BaseModel()
+        my_model.name = "First"
+        my_model.number = 20
+        my_model_json = my_model.to_dict()
+        my_new_model = BaseModel(**my_model_json)
+
+        output = "<class 'datetime.datetime'>"
+        with patch("sys.stdout", StringIO()) as my_str:
+            type(my_new_model.created_at)
+            self.assertEqual(my_str.get_value(), output)
 
 
 if __name__ == '__main__':
