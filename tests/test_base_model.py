@@ -37,7 +37,7 @@ class TestBaseClass(unittest.TestCase):
             dict_1['created_at'], dict_2['created_at'])
         self.assertNotEqual(
             my_model1.updated_at, my_model2.updated_at)
-       
+
     def test_kwargs(self):
         my_model = BaseModel()
         my_model.name = "First"
@@ -45,10 +45,10 @@ class TestBaseClass(unittest.TestCase):
         my_model_json = my_model.to_dict()
         my_new_model = BaseModel(**my_model_json)
 
-        output = "<class 'datetime.datetime'>"
+        output = "<class 'datetime.datetime'>\n"
         with patch("sys.stdout", StringIO()) as my_str:
-            type(my_new_model.created_at)
-            self.assertEqual(my_str.get_value(), output)
+            print(type(my_new_model.created_at))
+            self.assertEqual(my_str.getvalue(), output)
 
 
 if __name__ == '__main__':
