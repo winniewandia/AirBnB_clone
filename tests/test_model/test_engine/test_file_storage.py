@@ -75,9 +75,9 @@ class TestFileStorage(unittest.TestCase):
         storage.save()
         with open("file.json", 'r') as f:
             dict2 = json.load(f)
-        my_dict = dict2[key1]
-        for key in my_dict:
-            self.assertEqual(dict[key], my_dict[key])
+        values = dict2[key1]
+        for i in values:
+            self.assertEqual(dict[i], values[i])
 
     def testReload(self):
         """Checks if the path of the __filepath exists and
