@@ -8,6 +8,8 @@ serialize and deserialize instances to a json file
 import json
 import os
 
+from models.user import User
+
 
 class FileStorage:
     """This class  that serializes instances to 
@@ -49,7 +51,7 @@ class FileStorage:
         (only if the JSON file
         """
         from models.base_model import BaseModel
-        copy_dict = {'BaseModel': BaseModel}
+        copy_dict = {'BaseModel': BaseModel, 'User': User}
 
         if os.path.exists(FileStorage.__file_path) is True:
             with open(FileStorage.__file_path, 'r') as f:

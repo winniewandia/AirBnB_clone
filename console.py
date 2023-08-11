@@ -7,6 +7,7 @@ import shlex
 
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -17,7 +18,7 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = "(hbnb) "
 
-    my_classes = ["BaseModel"]
+    my_classes = ["BaseModel","User"]
 
     def do_quit(self, line):
         """The exit method
@@ -53,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         if arg not in HBNBCommand.my_classes:
             print("** class doesn't exist **")
             return
-        class_dict = {"BaseModel": BaseModel}
+        class_dict = {"BaseModel": BaseModel, "User": User}
 
         instance = class_dict[arg]()
         instance.save()
