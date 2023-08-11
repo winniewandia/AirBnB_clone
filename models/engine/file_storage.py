@@ -2,8 +2,8 @@
 """ This module contains FileStorage class that is to
 serialize and deserialize instances to a json file
 
-    Returns:
-        dict: The dict __object
+Returns:
+    dict: The dict __object
 """
 import json
 import os
@@ -12,7 +12,7 @@ from models.user import User
 
 
 class FileStorage:
-    """This class  that serializes instances to 
+    """This class  that serializes instances to
     a JSON file and deserializes JSON file to instances
     """
     __file_path = "file.json"
@@ -22,7 +22,7 @@ class FileStorage:
         """This method returns the dictionary __objects
 
         Returns:
-            dictonary: The dictonary __object 
+            dictonary: The dictonary __object
         """
         return FileStorage.__objects
 

@@ -11,6 +11,8 @@ from models.base_model import BaseModel
 
 class TestBaseClass(unittest.TestCase):
     def test_init(self):
+        """Checks the init method variables
+        """
         my_model = BaseModel()
         my_model.name = "First Model"
         my_model.number = 10
@@ -22,6 +24,8 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(my_model.id, my_model_json['id'])
 
     def test_diff_object_time(self):
+        """Tests update and created times for different objects
+        """
         my_model1 = BaseModel()
         my_model1.name = "First"
         my_model1.save()
@@ -40,6 +44,8 @@ class TestBaseClass(unittest.TestCase):
             my_model1.updated_at, my_model2.updated_at)
 
     def test_kwargs(self):
+        """Tests passing a dic in init method
+        """
         my_model = BaseModel()
         my_model.name = "First"
         my_model.number = 20
