@@ -4,9 +4,14 @@
 """
 import cmd
 import shlex
+from models.amenity import Amenity
 
 from models.base_model import BaseModel
 from models import storage
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 from models.user import User
 
 
@@ -18,7 +23,8 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = "(hbnb) "
 
-    my_classes = ["BaseModel", "User"]
+    my_classes = ["BaseModel", "User", "State",
+                  "City", "Amenity", "Place", "Review"]
 
     def do_quit(self, line):
         """The exit method
@@ -42,6 +48,29 @@ class HBNBCommand(cmd.Cmd):
         """
         return True
 
+    def emptyline(self):
+        """Do nothing on empty line input
+        """
+        pass
+
+    def do_help(self, arg):
+        """The help function displays help for commands
+        """
+        if arg:
+            try:
+                doc = getattr(self, 'do_' + arg).__doc__
+                if doc:
+                    print(doc)
+                else:
+                    print(f"No help available for '{arg}'")
+            except AttributeError:
+                print(f"Unknown command: '{arg}'")
+        else:
+            print("Available commands:")
+            for command in self.get_names():
+                if command.startswith('do_'):
+                    print(f"  {command[3:]}")
+
     def do_create(self, arg):
         """Creates a new instance of BaseModel and prints the id
 
@@ -54,7 +83,9 @@ class HBNBCommand(cmd.Cmd):
         if arg not in HBNBCommand.my_classes:
             print("** class doesn't exist **")
             return
-        class_dict = {"BaseModel": BaseModel, "User": User}
+        class_dict = {"BaseModel": BaseModel, "User": User, "City": City,
+                      "Amenity": Amenity, "State": State, "Place": Place,
+                      "Review": Review}
 
         instance = class_dict[arg]()
         instance.save()
