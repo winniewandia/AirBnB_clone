@@ -10,6 +10,10 @@ from models.base_model import BaseModel
 
 
 class TestBaseClass(unittest.TestCase):
+    """ This class contains the definition of
+    the unittest for the BaseClass
+    """
+    
     def test_init(self):
         """Checks the init method variables
         """
