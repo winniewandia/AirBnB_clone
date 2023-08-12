@@ -5,7 +5,6 @@ import datetime
 from io import StringIO
 import unittest
 from unittest.mock import patch
-
 from models.base_model import BaseModel
 
 
@@ -13,7 +12,7 @@ class TestBaseClass(unittest.TestCase):
     """ This class contains the definition of
     the unittest for the BaseClass
     """
-    
+
     def test_init(self):
         """Checks the init method variables
         """
@@ -38,7 +37,6 @@ class TestBaseClass(unittest.TestCase):
         self.assertIsInstance(my_model1.created_at, datetime.datetime)
         self.assertIsInstance(my_model1.updated_at, datetime.datetime)
         dict_1 = my_model1.to_dict()
-
         my_model2 = BaseModel()
         my_model2.save()
         dict_2 = my_model1.to_dict()
@@ -55,7 +53,6 @@ class TestBaseClass(unittest.TestCase):
         my_model.number = 20
         my_model_json = my_model.to_dict()
         my_new_model = BaseModel(**my_model_json)
-
         output = "<class 'datetime.datetime'>\n"
         with patch("sys.stdout", StringIO()) as my_str:
             print(type(my_new_model.created_at))
