@@ -19,7 +19,7 @@ class TestFileStorage(unittest.TestCase):
     def testException(self):
         """Tests the arguments of the save function
         """
-        output = "FileStorage.save() takes 1 positional argument but 2 were given"
+        output = "save() takes 1 positional argument but 2 were given"
         with self.assertRaises(TypeError) as err:
             FileStorage.save(self, 20)
         self.assertEqual(str(err.exception), output)
