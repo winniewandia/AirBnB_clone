@@ -169,11 +169,11 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        # my_string = ""
-        # for token in arg.split(','):
-        #     my_string += token
+        my_string = ""
+        for token in arg.split(','):
+            my_string += token
 
-        command_arg = shlex.split(arg)
+        command_arg = shlex.split(my_string)
 
         if command_arg[0] not in HBNBCommand.my_classes:
             print("** class doesn't exist **")
