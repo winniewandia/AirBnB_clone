@@ -47,24 +47,6 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-    #def do_help(self, arg):
-        #"""The help function displays help for commands
-        #"""
-        #if arg:
-            #try:
-                #doc = getattr(self, 'do_' + arg).__doc__
-                #if doc:
-                    #print(doc)
-                #else:
-                    #print(f"No help available for '{arg}'")
-            #except AttributeError:
-                #print(f"Unknown command: '{arg}'")
-        #else:
-            #print("Available commands:")
-            #for command in self.get_names():
-                #if command.startswith('do_'):
-                    #print(f"  {command[3:]}")
-
     def do_create(self, arg):
         """Creates a new instance of BaseModel and prints the id
 
