@@ -74,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
             arg (str): Class name and instance id
         """
         args = arg.split(" ")
-        if not args:
+        if len(args[0]) == 0:
             print("** class name missing **")
             return
         if args[0] not in HBNBCommand.my_classes:
@@ -99,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
          arg (str): Class name and instance id
         """
         args = arg.split(" ")
-        if not args:
+        if len(args[0]) == 0:
             print("** class name missing **")
             return
         if args[0] not in HBNBCommand.my_classes:
@@ -128,14 +128,14 @@ class HBNBCommand(cmd.Cmd):
 
         """
         args = arg.split(" ")
-        if args[0] not in HBNBCommand.my_classes:
+        if len(args[0]) > 0 and args[0] not in HBNBCommand.my_classes:
             print("** class doesn't exist **")
             return
         all_objects = storage.all()
         list_all = []
         for key, value in all_objects.items():
             object_name = value.__class__.__name__
-            if object_name == args[0]:
+            if len(args[0]) == 0 or object_name == args[0]:
                 list_all += [value.__str__()]
         print(list_all)
 
