@@ -9,7 +9,7 @@
     justify-content: flex-end;
     padding-right: 30px;
 }
-.btn {
+.button {
     background-color: #FF5A5F;
     height: 48px;
     width: 20%;
@@ -19,10 +19,10 @@
     align-items: center;
     justify-content: center;
 }
-.btn:hover {
+.button:hover {
     opacity: 0.9;
 }
-.btn p {
+.button p {
     font-size: 18px;
     color: #FFFFFF;
 }
